@@ -175,3 +175,34 @@ test.set('banana', 'yellow');
 console.log(test.keys()); // ['apple', 'banana']
 console.log(test.values()); // ['red', 'yellow']
 console.log(test.entries()); // [['apple', 'red'], ['banana', 'yellow']]
+
+class HashSet {
+    constructor(initialCapacity = 16, loadFactor = 0.75) {
+      this.hashMap = new HashMap(initialCapacity, loadFactor);
+    }
+  
+    add(key) {
+      this.hashMap.set(key, true);
+    }
+  
+    has(key) {
+      return this.hashMap.has(key);
+    }
+  
+    remove(key) {
+      return this.hashMap.remove(key);
+    }
+  
+    clear() {
+      this.hashMap.clear();
+    }
+  
+    keys() {
+      return this.hashMap.keys();
+    }
+  
+    size() {
+      return this.hashMap.length();
+    }
+  }
+  
