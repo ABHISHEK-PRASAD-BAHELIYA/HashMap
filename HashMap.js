@@ -45,6 +45,79 @@ class HashMap {
     }
     return null;
   }
+
+  has(key) {
+    const index = this.hash(key);
+    const bucket = this.buckets[index];
+    if (bucket) {
+      for (let i = 0; i < bucket.length; i++) {
+        if (bucket[i][0] === key) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  remove(key) {
+    const index = this.hash(key);
+    const bucket = this.buckets[index];
+    if (bucket) {
+      for (let i = 0; i < bucket.length; i++) {
+        if (bucket[i][0] === key) {
+          bucket.splice(i, 1);
+          this.size--;
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  length() {
+    return this.size;
+  }
+
+  clear() {
+    this.buckets = new Array(this.buckets.length);
+    this.size = 0;
+  }
+
+  keys() {
+    const keysArray = [];
+    for (const bucket of this.buckets) {
+      if (bucket) {
+        for (const pair of bucket) {
+          keysArray.push(pair[0]);
+        }
+      }
+    }
+    return keysArray;
+  }
+
+  values() {
+    const valuesArray = [];
+    for (const bucket of this.buckets) {
+      if (bucket) {
+        for (const pair of bucket) {
+          valuesArray.push(pair[1]);
+        }
+      }
+    }
+    return valuesArray;
+  }
+
+  entries() {
+    const entriesArray = [];
+    for (const bucket of this.buckets) {
+      if (bucket) {
+        for (const pair of bucket) {
+          entriesArray.push(pair);
+        }
+      }
+    }
+    return entriesArray;
+  }
 }
 
 
