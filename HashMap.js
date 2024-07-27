@@ -204,5 +204,20 @@ class HashSet {
     size() {
       return this.hashMap.length();
     }
-  }
+}
   
+  // Testing the HashSet
+  const set = new HashSet();
+  
+  set.add('apple');
+  set.add('banana');
+  set.add('carrot');
+  
+  console.log(set.has('banana')); // true
+  console.log(set.remove('banana')); // true
+  console.log(set.has('banana')); // false
+  
+  console.log(set.size()); // 2
+  
+  set.clear();
+  console.log(set.size()); // 0
