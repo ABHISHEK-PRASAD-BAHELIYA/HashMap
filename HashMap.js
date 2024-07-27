@@ -118,6 +118,19 @@ class HashMap {
     }
     return entriesArray;
   }
+
+  resize() {
+    const oldBuckets = this.buckets;
+    this.buckets = new Array(this.buckets.length * 2);
+    this.size = 0;
+    for (const bucket of oldBuckets) {
+      if (bucket) {
+        for (const pair of bucket) {
+          this.set(pair[0], pair[1]);
+        }
+      }
+    }
+  }
 }
 
 
