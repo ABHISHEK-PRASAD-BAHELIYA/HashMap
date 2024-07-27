@@ -133,4 +133,45 @@ class HashMap {
   }
 }
 
+// Testing the HashMap
+const test = new HashMap();
 
+test.set('apple', 'red');
+test.set('banana', 'yellow');
+test.set('carrot', 'orange');
+test.set('dog', 'brown');
+test.set('elephant', 'gray');
+test.set('frog', 'green');
+test.set('grape', 'purple');
+test.set('hat', 'black');
+test.set('ice cream', 'white');
+test.set('jacket', 'blue');
+test.set('kite', 'pink');
+test.set('lion', 'golden');
+
+// Overwriting some nodes
+test.set('apple', 'green');
+test.set('banana', 'brown');
+
+// Adding new node to trigger resize
+test.set('moon', 'silver');
+
+console.log(test.get('apple')); // green
+console.log(test.get('banana')); // brown
+console.log(test.get('carrot')); // orange
+console.log(test.get('moon')); // silver
+
+console.log(test.has('dog')); // true
+console.log(test.remove('dog')); // true
+console.log(test.has('dog')); // false
+
+console.log(test.length()); // 12
+
+test.clear();
+console.log(test.length()); // 0
+
+test.set('apple', 'red');
+test.set('banana', 'yellow');
+console.log(test.keys()); // ['apple', 'banana']
+console.log(test.values()); // ['red', 'yellow']
+console.log(test.entries()); // [['apple', 'red'], ['banana', 'yellow']]
